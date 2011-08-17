@@ -15,6 +15,8 @@ system("perl update_posts.pl 0 50"); # put new posts into the database
 system("perl update_posts.pl 51 100");
 system("perl update_posts.pl 101 150");
 system("perl update_posts.pl 151 200");
+system("perl update_posts.pl 201 250");
+system("perl update_posts.pl 251 300");
 system("perl update_feeds.pl"); # update feed names, descriptions etc.
 system("perl get_links.pl"); # get all URLs from posts
 system("perl get_inchis.pl"); # get all InChIs from posts
@@ -43,7 +45,7 @@ system("perl handle_biomed.pl");
 #system("perl get_connotea_tags.pl"); # match tags and comments to items in our database
 system("perl generate_summaries.pl"); # generate summary tables to speed up front-end
 system("perl get_bursts.pl"); # get wordbursts
-system("perl geolocate_terms.pl"); # geolocate terms associated with conference posts
+#system("perl geolocate_terms.pl"); # geolocate terms associated with conference posts
 system("perl generate_xml.pl"); # generate flatfiles for papers in the database
 system("perl wipe_cache.pl"); # wipe cache of interface
 

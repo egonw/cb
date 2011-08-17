@@ -17,8 +17,8 @@ my $db = DBI->connect($connection_string, $config{"db_user"}, $config{"db_passwo
 # get active posts
 my %posts;
 my %blogs;
-my $sql = $db->prepare("SELECT post_id, blog_id, filename FROM posts WHERE active=1");
-#my $sql = $db->prepare("SELECT post_id, blog_id, filename FROM posts");
+#my $sql = $db->prepare("SELECT post_id, blog_id, filename FROM posts WHERE active=1");
+my $sql = $db->prepare("SELECT post_id, blog_id, filename FROM posts");
 $sql->execute();
 while (my $row = $sql->fetchrow_hashref()) {
 	$posts{$row->{"post_id"}} = $row->{"filename"};

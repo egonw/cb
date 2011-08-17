@@ -25,7 +25,7 @@ import string
 import time
 from xml.sax import saxutils
 
-ENCODING = 'ascii'
+ENCODING = 'us-ascii'
 ENCODING_ERRORS = 'ignore'
 FEED_DIR = "feeds/"
 POSTS_DIR = "posts/"

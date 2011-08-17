@@ -63,8 +63,12 @@ while (my $row = $sql->fetchrow_hashref()) {
         print STDERR " -> hash: $hash\n";
 
 	my @posts = glob($posts_dir."/post_*");
+        # my $postCounter = 0;
 	foreach my $post (@posts) {
-		
+                # do at most 25 blog posts
+		#last if ($postCounter == 25);
+		#$postCounter++;
+
 		if (!$config{"allow_post_edits"}) {
 			if ($exists{$post}) {
 				print STDERR "-";

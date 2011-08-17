@@ -49,7 +49,7 @@ foreach my $journal (@acs_journals) {
 	
 	while (my $row = $sql->fetchrow_hashref()) {
 		my $doi = $row->{"doi_id"};
-		my $url = "http://pubs3.acs.org/acs/journals/doilookup?in_doi=".$doi;
+		my $url = "http://pubs.acs.org/doi/abs/".$doi;
                 print STDERR "URL: $url\n";
 		my $page = download_url($url);
 		
@@ -66,6 +66,10 @@ foreach my $journal (@acs_journals) {
 			my $update = $db->prepare("UPDATE papers SET title=? WHERE doi_id=?");
 			$update->execute($ptitle, $doi);
                 } elsif ($page =~ /<span class="textbold">(.*?)<\/span>/) {
+                        print STDERR "Got title $1\n";
+                        my $update = $db->prepare("UPDATE papers SET title=? WHERE doi_id=?");
+                        $update->execute($1, $doi);
+                } elsif ($page =~ /name="dc.title"\s+content="(.*?)"/i) {
                         print STDERR "Got title $1\n";
                         my $update = $db->prepare("UPDATE papers SET title=? WHERE doi_id=?");
                         $update->execute($1, $doi);
